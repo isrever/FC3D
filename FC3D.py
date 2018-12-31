@@ -1,4 +1,5 @@
 #!/usr/bin/env python 2.7
+from __future__ import division
 
 """FC3D.py: Sends files and commands to 3D printers * ONLY tested with QIDI Printers NOT tested with other brands. """
 """Code Refactored by gekitsu"""
@@ -6,7 +7,6 @@
 __author__ = "Isrever"
 
 #IMPORTS
-from __future__ import division
 import time
 import logging
 import os
@@ -231,7 +231,7 @@ if __name__ == '__main__':
     address = (ip, int(port))
     print("----------------------------------------------------------")
 
-    option = raw_input("Do you want to send a file or send a command: ")
+    option = raw_input("Do you want to send a file / command / or custom command: ")
 
     if option.lower() in ['file', 'f']:
         gcodefile = raw_input("Please enter path to file: ")
@@ -252,7 +252,7 @@ if __name__ == '__main__':
         print("DELETE FILE FROM SD")
         print("----------------------------------------------------------")
 
-        command = raw_input("Please enter command: ")
+        command = raw_input("Please enter a listed command: ")
 
         # theres probably a way neater way of not having to duplicate the
         # send_command call in each if
@@ -274,3 +274,8 @@ if __name__ == '__main__':
             send_command(cmd, SOCKET, address)
         elif command.lower() in ['exit', 'e']:
             exit()
+			
+    if option.lower() in ['custom', 'cu']:
+	customcommand = raw_input("Please enter command: ")
+    cmd = customcommand
+    send_command(cmd, SOCKET, address)
