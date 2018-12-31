@@ -218,7 +218,7 @@ def send_command(cmd, socket, address):
     log_response(socket)
 
 if __name__ == '__main__':
-    print("Welcome to FCQ (File & Command sender for qidi printers")
+    print("Welcome to FC3D (File & Command sender for 3D printers")
     print("----------------------------------------------------------")
     print("Current range of printers tested: ")
     print("X-smart, X-pro")
